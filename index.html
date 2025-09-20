@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GreenBite - Healthy Living Platform</title>
+  <meta name="description" content="GreenBite helps you live healthier with recipes, workouts, mindfulness practices, and nutrition calculators.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="Green_Bite__2_-removebg-preview.png" type="image/png">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>  
+  <header class="navbar">
+    <div class="logo">
+      <img src="Green_Bite__2_-removebg-preview.png" alt="GreenBite Logo" class="logo-img" width="93" height="93">
+    </div>
+    <nav aria-label="Main navigation">
+      <ul class="nav-links">
+        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="recipes.html">Recipes</a></li>
+        <li><a href="calculator.html">Calculator</a></li>
+        <li><a href="workout.html">Workout</a></li>
+        <li><a href="mindfulness.html">Mindfulness</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-content">
+        <h1 id="hero-heading">Healthy Living Starts Here</h1>
+        <p class="hero-sub">Transform your lifestyle with GreenBite's comprehensive wellness tools</p>
+        <a href="#health-tips" class="btn">Get Started</a>
+      </div>
+    </section>
+
+    <section id="health-tips" class="featured-section" aria-labelledby="tips-heading">
+      <h2 id="tips-heading">Daily Health Tips</h2>
+      <div class="tips-container" id="tips-container">
+        <p>Loading health tips...</p>
+      </div>
+    </section>
+
+    <section id="workout-preview" class="preview-section" aria-labelledby="workout-heading">
+      <h2 id="workout-heading">Featured Workouts</h2>
+      <div class="preview-cards">
+        <article class="preview-card">
+          <h3>Upper Body Strength</h3>
+          <p>Focus on arms, chest, and shoulders with effective exercises</p>
+          <a href="workout.html" class="btn">View Workout</a>
+        </article>
+        <article class="preview-card">
+          <h3>Core & Abs</h3>
+          <p>Strengthen your core with targeted home exercises</p>
+          <a href="workout.html" class="btn">View Workout</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="calculator-preview" class="preview-section" aria-labelledby="calculator-heading">
+      <h2 id="calculator-heading">Nutrition Calculator</h2>
+      <p>Calculate your calorie needs and macronutrient breakdown</p>
+      <a href="calculator.html" class="btn">Use Calculator</a>
+    </section>
+
+    <section id="mindfulness-preview" class="preview-section" aria-labelledby="mindfulness-heading">
+      <h2 id="mindfulness-heading">Mindfulness Practices</h2>
+      <div class="preview-cards">
+        <article class="preview-card">
+          <h3>Breathing Exercises</h3>
+          <p>Reduce stress with simple 5-minute breathing techniques</p>
+          <a href="mindfulness.html" class="btn">Learn More</a>
+        </article>
+        <article class="preview-card">
+          <h3>Daily Meditation</h3>
+          <p>Boost focus and calm your mind with guided meditation</p>
+          <a href="mindfulness.html" class="btn">Learn More</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="newsletter" aria-labelledby="newsletter-heading">
+      <h2 id="newsletter-heading">Subscribe for Weekly Tips</h2>
+      <p>Join our newsletter to receive health tips directly to your inbox!</p>
+      <form id="newsletterForm">
+        <label for="newsletterEmail" class="visually-hidden">Email Address</label>
+        <input type="email" id="newsletterEmail" placeholder="Enter your email" required aria-required="true">
+        <button type="submit" class="btn">Subscribe</button>
+      </form>
+      <p id="newsletter-success" class="success-msg" aria-live="polite" role="status"></p>
+      <p id="newsletter-error" class="error-msg" aria-live="assertive" role="alert"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 GreenBite. All rights reserved.</p>
+    <nav aria-label="Footer navigation">
+      <a href="index.html">Home</a> |
+      <a href="recipes.html">Recipes</a> |
+      <a href="calculator.html">Calculator</a> |
+      <a href="workout.html">Workout</a> |
+      <a href="mindfulness.html">Mindfulness</a> |
+      <a href="contact.html">Contact</a>
+    </nav>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

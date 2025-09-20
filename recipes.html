@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GreenBite - Healthy Recipes</title>
+  <meta name="description" content="Discover healthy, delicious recipes for every meal with GreenBite's curated collection.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="Green_Bite__2_-removebg-preview.png" type="image/png">
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      <img src="Green_Bite__2_-removebg-preview.png" alt="GreenBite Logo" class="logo-img" width="93" height="93">
+    </div>
+    <nav aria-label="Main navigation">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="recipes.html" aria-current="page">Recipes</a></li>
+        <li><a href="calculator.html">Calculator</a></li>
+        <li><a href="workout.html">Workout</a></li>
+        <li><a href="mindfulness.html">Mindfulness</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-content">
+        <h1 id="hero-heading">Healthy Recipes for Every Day</h1>
+        <p class="hero-sub">Delicious, nutritious, and easy-to-prepare meals for a balanced lifestyle</p>
+        <a href="#recipesGrid" class="btn">Explore Recipes</a>
+      </div>
+    </section>
+
+    <section class="search-filter" aria-labelledby="filter-heading">
+      <h2 id="filter-heading" class="visually-hidden">Recipe Search and Filter</h2>
+      <label for="searchInput" class="visually-hidden"></label>
+      <input type="text" id="searchInput" placeholder="Search recipes..." aria-label="Search recipes">
+      
+      <label for="categoryFilter" class="visually-hidden"></label>
+      <select id="categoryFilter" aria-label="Filter by category">
+        <option value="all">All Categories</option>
+        <option value="Breakfast">Breakfast</option>
+        <option value="Lunch">Lunch</option>
+        <option value="Dinner">Dinner</option>
+        <option value="Snack">Snack</option>
+      </select>
+    </section>
+
+    <section id="recipesGrid" class="grid-container" aria-labelledby="recipes-heading">
+      <h2 id="recipes-heading" class="visually-hidden">Recipe Collection</h2>
+    </section>
+
+    <div class="modal" id="recipeModal" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
+      <div class="modal-content">
+        <button class="close" aria-label="Close modal">&times;</button>
+        <h2 id="modalTitle">1</h2>
+        <p id="modalDescription"></p>
+        
+        <h3>Ingredients:</h3>
+        <ul id="modalIngredients"></ul>
+        
+        <h3>Steps:</h3>
+        <ol id="modalSteps"></ol>
+        
+        <h3>Nutrition Information:</h3>
+        <table>
+          <caption class="visually-hidden">Nutritional values per serving</caption>
+          <thead>
+            <tr>
+              <th scope="col">Calories</th>
+              <th scope="col">Protein</th>
+              <th scope="col">Carbs</th>
+              <th scope="col">Fat</th>
+            </tr>
+          </thead>
+          <tbody id="modalNutrition"></tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 GreenBite. All Rights Reserved.</p>
+    <nav aria-label="Footer navigation">
+      <a href="privacy.html">Privacy Policy</a>
+    </nav>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

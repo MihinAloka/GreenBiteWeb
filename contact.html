@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GreenBite - Contact & Feedback</title>
+  <meta name="description" content="Contact GreenBite for feedback, questions, or inquiries. Submit messages, find us on the map, and check FAQs.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="Green_Bite__2_-removebg-preview.png" type="image/png">
+</head>
+<body> 
+  <header class="navbar">
+    <div class="logo">
+      <img src="Green_Bite__2_-removebg-preview.png" alt="GreenBite Logo" class="logo-img" width="93" height="93">
+    </div>
+    <nav aria-label="Main navigation">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="recipes.html">Recipes</a></li>
+        <li><a href="calculator.html">Calculator</a></li>
+        <li><a href="workout.html">Workout</a></li>
+        <li><a href="mindfulness.html">Mindfulness</a></li>
+        <li><a href="contact.html" aria-current="page">Contact</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-content">
+        <h1 id="hero-heading">Contact & Feedback</h1>
+        <p class="hero-sub">We'd love to hear from you! Send us a message or find us on the map.</p>
+      </div>
+    </section>
+
+    <section class="contact-section" aria-labelledby="contact-heading">
+      <h2 id="contact-heading" class="visually-hidden">Contact Information</h2>
+      
+      <div class="contact-container" aria-labelledby="form-heading">
+        <h3 id="form-heading">Send Us a Message</h3>
+        <form id="contact-form">
+          <label for="name">Your Name:</label>
+          <input type="text" id="name" placeholder="Your Name" required aria-required="true">
+          
+          <label for="email">Your Email:</label>
+          <input type="email" id="email" placeholder="Your Email" required aria-required="true">
+          
+          <label for="message">Your Message:</label>
+          <textarea id="message" placeholder="Your Message" rows="5" required aria-required="true"></textarea>
+          
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+        <p id="form-msg" class="success-msg" aria-live="polite" role="status"></p>
+      </div>
+      
+      <div class="map-container" aria-labelledby="map-heading">
+        <h3 id="map-heading">Find Us</h3>
+        <iframe 
+          src="https://maps.google.com/maps?q=colombo&t=&z=13&ie=UTF8&iwloc=&output=embed" 
+          loading="lazy" 
+          title="GreenBite Location on Map"
+          aria-label="Map showing GreenBite location">
+        </iframe>
+      </div>
+      
+      <div class="faq-section" aria-labelledby="faq-heading">
+        <h3 id="faq-heading">Frequently Asked Questions</h3>
+        
+        <button class="accordion-btn" aria-expanded="false" aria-controls="faq1">What is GreenBite?</button>
+        <div class="accordion-panel" id="faq1" role="region">
+          <p>GreenBite is a wellness platform promoting healthy living through recipes, workouts, and mindfulness.</p>
+        </div>
+
+        <button class="accordion-btn" aria-expanded="false" aria-controls="faq2">Is this platform free?</button>
+        <div class="accordion-panel" id="faq2" role="region">
+          <p>Yes, all features of GreenBite are completely free to use.</p>
+        </div>
+
+        <button class="accordion-btn" aria-expanded="false" aria-controls="faq3">Can I submit feedback anonymously?</button>
+        <div class="accordion-panel" id="faq3" role="region">
+          <p>Yes, you may leave your name blank if you prefer.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 GreenBite | All rights reserved</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

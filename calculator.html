@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GreenBite - Calorie & Nutrition Calculator</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="Green_Bite__2_-removebg-preview.png">
+  <meta name="description" content="Calculate your daily calorie needs and macronutrient breakdown with GreenBite's Calorie & Nutrition Calculator.">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo">
+      <img src="Green_Bite__2_-removebg-preview.png" alt="GreenBite Logo" class="logo-img">
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="recipes.html">Recipes</a></li>
+        <li><a href="calculator.html" class="active">Calculator</a></li>
+        <li><a href="workout.html">Workout</a></li>
+        <li><a href="mindfulness.html">Mindfulness</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="hamburger" aria-label="Toggle Navigation">&#9776;</div>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Calorie & Nutrition Calculator</h1>
+      <p id="hero-quote">Eat healthy, live better.</p>
+      <p class="hero-sub">Calculate your daily calorie needs and macronutrient breakdown</p>
+    </div>
+  </section>
+
+  <section class="calculator-section">
+    <div class="calc-container">
+      <form id="calc-form">
+        <h2>Enter Your Details</h2>
+
+        <label for="age">Age (years):</label>
+        <input min="0" max="120" type="number" id="age" placeholder="e.g., 25" required>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" required>
+          <option value="" disabled selected>Select Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+
+        <label for="height">Height (cm):</label>
+        <input min="0" type="number" id="height" placeholder="e.g., 170" required>
+        
+
+        <label for="weight">Weight (kg):</label>
+        <input min="0" type="number" id="weight" placeholder="e.g., 70" required>
+
+        <label for="activity">Activity Level:</label>
+        <select id="activity" required>
+          <option value="" disabled selected>Select Activity</option>
+          <option value="1.2">Sedentary (Little/no exercise)</option>
+          <option value="1.375">Lightly active (1–3 days/week)</option>
+          <option value="1.55">Moderately active (3–5 days/week)</option>
+          <option value="1.725">Very active (6–7 days/week)</option>
+          <option value="1.9">Super active (very hard/physical job)</option>
+        </select>
+
+        <button type="submit" class="btn">Calculate</button>
+        <p id="calc-error" class="error-msg"></p>
+      </form>
+
+      <div id="calc-results" class="calc-results"></div>
+    </div>
+  </section>
+
+
+  <footer>
+    &copy; 2025 GreenBite | <a href="index.html">Home</a>
+  </footer>
+
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      const expanded = navLinks.classList.contains('active');
+      hamburger.setAttribute('aria-expanded', expanded);
+    });
+
+    function rotateHeroSlogan() {
+      const quotes = [
+        "Eat healthy, live better.",
+        "Wellness starts with small steps.",
+        "Fuel your body, feed your mind."
+      ];
+      const heroQuote = document.getElementById('hero-quote');
+      if (!heroQuote) return;
+      let i = 0;
+      setInterval(() => {
+        heroQuote.textContent = quotes[i % quotes.length];
+        i++;
+      }, 5000);
+    }
+    rotateHeroSlogan();
+
+    const form = document.getElementById('calc-form');
+    const resultsDiv = document.getElementById('calc-results');
+    const errorMsg = document.getElementById('calc-error');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      errorMsg.textContent = '';
+
+      const age = parseFloat(document.getElementById('age').value);
+      const gender = document.getElementById('gender').value;
+      const height = parseFloat(document.getElementById('height').value);
+      const weight = parseFloat(document.getElementById('weight').value);
+      const activity = parseFloat(document.getElementById('activity').value);
+
+      if (!age || !gender || !height || !weight || !activity) {
+        errorMsg.textContent = 'Please fill in all fields correctly.';
+        resultsDiv.innerHTML = '';
+        return;
+      }
+
+      let BMR = gender === 'male'
+        ? 10 * weight + 6.25 * height - 5 * age + 5
+        : 10 * weight + 6.25 * height - 5 * age - 161;
+
+      let TDEE = Math.round(BMR * activity);
+
+      const carbs = Math.round((TDEE * 0.5) / 4);
+      const protein = Math.round((TDEE * 0.2) / 4);
+      const fat = Math.round((TDEE * 0.3) / 9);
+
+      const maxMacro = Math.max(carbs, protein, fat);
+
+      resultsDiv.innerHTML = `
+        <h2>Your Results</h2>
+        <p><strong>BMR:</strong> ${BMR.toFixed(1)} kcal/day</p>
+        <p><strong>TDEE:</strong> ${TDEE} kcal/day</p>
+        <h3>Macronutrient Breakdown</h3>
+        <div class="macro-bars">
+          <div class="macro-bar carbs" style="width:${(carbs/maxMacro*100)}%">Carbs: ${carbs}g</div>
+          <div class="macro-bar protein" style="width:${(protein/maxMacro*100)}%">Protein: ${protein}g</div>
+          <div class="macro-bar fat" style="width:${(fat/maxMacro*100)}%">Fat: ${fat}g</div>
+        </div>
+      `;
+    });
+  </script>
+</body>
+</html>

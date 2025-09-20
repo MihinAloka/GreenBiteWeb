@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GreenBite - Mindfulness & Meditation</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="Green_Bite__2_-removebg-preview.png">
+  <meta name="description" content="Practice mindfulness and meditation with GreenBite. Track daily minutes, use a guided timer, and play ambient sounds.">
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      <img src="Green_Bite__2_-removebg-preview.png" alt="GreenBite Logo" class="logo-img">
+    </div>
+    <nav aria-label="Main navigation">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="recipes.html">Recipes</a></li>
+        <li><a href="calculator.html">Calculator</a></li>
+        <li><a href="workout.html">Workout</a></li>
+        <li><a href="mindfulness.html" aria-current="page">Mindfulness</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-content">
+        <h1 id="hero-heading">Mindfulness & Meditation</h1>
+        <p class="hero-sub">Relax, focus, and track your mental wellness daily</p>
+      </div>
+    </section>
+
+    <section class="mindfulness-section" aria-labelledby="breathing-heading">
+      <h2 id="breathing-heading">Breathing Exercise</h2>
+      <div class="breathing-container" aria-live="polite">Breathe In & Out</div>
+      <p class="visually-hidden">Follow the animation: breathe in as the circle expands, breathe out as it contracts</p>
+    </section>
+
+    <section class="mindfulness-section" aria-labelledby="tracker-heading">
+      <h2 id="tracker-heading">Track Daily Mindfulness Minutes</h2>
+      <div class="tracker-container">
+        <label for="mindfulness-minutes" class="visually-hidden">Enter mindfulness minutes</label>
+        <input type="number" id="mindfulness-minutes" placeholder="Minutes" min="1" max="240" aria-describedby="minutes-help">
+        <span id="minutes-help" class="visually-hidden">Enter number of minutes practiced</span>
+        <button id="addMindfulness" class="btn">Add</button>
+        <p>Total minutes: <span id="total-minutes" aria-live="polite">0</span></p>
+      </div>
+    </section>
+
+    <section class="meditation-section" aria-labelledby="meditation-heading">
+      <h2 id="meditation-heading">Guided Meditation Timer</h2>
+      <label for="meditation-time" class="visually-hidden">Enter meditation minutes</label>
+      <input type="number" id="meditation-time" placeholder="Minutes" min="1" max="60" aria-describedby="meditation-help">
+      <span id="meditation-help" class="visually-hidden">Enter meditation duration in minutes</span>
+      <button id="startMeditation" class="btn">Start Timer</button>
+      <p id="meditation-display" aria-live="assertive">00:00</p>
+      <div class="ambient-sounds">
+        <button id="toggleSound" class="btn" aria-pressed="false">
+          <span class="sound-state">Play</span> Ambient Sound
+        </button>
+        <audio id="ambientAudio" loop aria-label="Ambient sound for meditation">
+          <source src="ambient-noise-236388.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 GreenBite | All rights reserved</p>
+  </footer>
+
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
+
+    const totalMinutesEl = document.getElementById('total-minutes');
+    const addBtn = document.getElementById('addMindfulness');
+    const mindfulnessInput = document.getElementById('mindfulness-minutes');
+
+    let totalMinutes = localStorage.getItem('mindfulnessMinutes') || 0;
+    totalMinutesEl.textContent = totalMinutes;
+
+    addBtn.addEventListener('click', () => {
+      const minutes = parseInt(mindfulnessInput.value);
+      if(!isNaN(minutes) && minutes > 0){
+        totalMinutes = parseInt(totalMinutes) + minutes;
+        totalMinutesEl.textContent = totalMinutes;
+        localStorage.setItem('mindfulnessMinutes', totalMinutes);
+        mindfulnessInput.value = '';
+      }
+    });
+
+    const meditationInput = document.getElementById('meditation-time');
+    const startBtn = document.getElementById('startMeditation');
+    const display = document.getElementById('meditation-display');
+    let timer;
+
+    startBtn.addEventListener('click', () => {
+      let totalSeconds = parseInt(meditationInput.value) * 60;
+      if(isNaN(totalSeconds) || totalSeconds <= 0) return;
+
+      clearInterval(timer);
+      timer = setInterval(() => {
+        const minutes = Math.floor(totalSeconds / 60);
+        const seconds = totalSeconds % 60;
+        display.textContent = `${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
+        totalSeconds--;
+        if(totalSeconds < 0){
+          clearInterval(timer);
+          display.textContent = "Done!";
+        }
+      }, 1000);
+    });
+
+    const toggleSoundBtn = document.getElementById('toggleSound');
+    const audio = document.getElementById('ambientAudio');
+    audio.volume = 0.5;
+
+    toggleSoundBtn.addEventListener('click', () => {
+      if(audio.paused){
+        audio.play().catch(err => console.log('Audio play blocked:', err));
+      } else {
+        audio.pause();
+      }
+    });
+  </script>
+
+<script src="script.js"></script>
+</body>
+</html>

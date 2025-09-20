@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GreenBite - Workout Generator</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="Green_Bite__2_-removebg-preview.png">
+  <meta name="description" content="Generate a personalized workout plan for arms, chest, back, legs, or full body with GreenBite's interactive workout generator.">
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      <img src="Green_Bite__2_-removebg-preview.png" alt="GreenBite Logo" class="logo-img"> 
+    </div>
+    <nav aria-label="Main navigation">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="recipes.html">Recipes</a></li>
+        <li><a href="calculator.html">Calculator</a></li>
+        <li><a href="workout.html" class="active" aria-current="page">Workout</a></li>
+        <li><a href="mindfulness.html">Mindfulness</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
+    </nav>
+  </header>
+
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="hero-content">
+      <h1 id="hero-heading">Workout Generator</h1>
+      <p class="hero-sub">Build strength and tone your body with custom exercises</p>
+    </div>
+  </section>
+
+  <section class="warmup-section" aria-labelledby="warmup-heading">
+    <h2 id="warmup-heading">Warm-up Before You Start</h2>
+    <ul>
+      <li>✅ 2 minutes light jogging in place</li>
+      <li>✅ Arm circles (forward & backward)</li>
+      <li>✅ Bodyweight squats x 15</li>
+      <li>✅ Shoulder stretches</li>
+    </ul>
+  </section>
+
+  <section class="workout-selector" aria-labelledby="selector-heading">
+    <h2 id="selector-heading">Choose Your Workout</h2>
+    <label for="bodyPartSelect" class="visually-hidden">Select body part</label>
+    <select id="bodyPartSelect" aria-describedby="selector-help">
+      <option value="arms">Arms</option>
+      <option value="chest">Chest</option>
+      <option value="back">Back</option>
+      <option value="legs">Legs</option>
+      <option value="fullbody">Full Body</option>
+    </select>
+    <span id="selector-help" class="visually-hidden">Select which body part to workout</span>
+    <button id="generateWorkout" class="btn">Generate Workout</button>
+  </section>
+
+  <section id="workoutGrid" class="grid-container" aria-labelledby="workouts-heading">
+    <h2 id="workouts-heading" class="visually-hidden">Generated Workouts</h2>
+  </section>
+
+<section class="tips-section" aria-labelledby="tips-heading">
+  <h2 id="tips-heading">Pro Tips for Success</h2>
+  <ul>
+    <li>💧 Stay hydrated throughout your workout.</li>
+    <li>🧘 Maintain proper form to prevent injuries.</li>
+    <li>⏱️ Rest between sets, but don't extend too long.</li>
+    <li>🍎 Pair your workouts with balanced nutrition.</li>
+    <li>🔥 Warm up before and cool down after every session.</li>
+    <li>📈 Track your progress to stay motivated and consistent.</li>
+  </ul>
+</section>
+
+
+  <section class="progress-section" aria-labelledby="progress-heading">
+    <h2 id="progress-heading">Track Your Progress</h2>
+    <form id="progressForm">
+      <label for="workoutDone" class="visually-hidden">Enter completed workout</label>
+      <input type="text" id="workoutDone" placeholder="Workout completed (e.g. Arms)" required aria-required="true">
+      <button type="submit" class="btn">Save Progress</button>
+    </form>
+    <ul id="progressList" aria-live="polite"></ul>
+  </section>
+
+  <section class="motivation-section" aria-labelledby="motivation-heading">
+    <h2 id="motivation-heading">Stay Motivated 💪</h2>
+    <blockquote>"The pain you feel today will be the strength you feel tomorrow."</blockquote>
+    <blockquote>"Don't limit your challenges, challenge your limits."</blockquote>
+  </section>
+
+  <div class="modal" id="workoutModal" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
+    <div class="modal-content">
+      <button class="close" aria-label="Close modal">&times;</button>
+      <h2 id="modalTitle">Exercise Name</h2>
+      <p id="modalDesc">Instructions</p>
+      <ul>
+        <li>Sets: <span id="modalSets"></span></li>
+        <li>Reps: <span id="modalReps"></span></li>
+        <li>Rest: <span id="modalRest"></span> sec</li>
+      </ul>
+      <div>
+        <button id="startTimer" class="btn">Start Timer</button>
+        <p id="timerDisplay" aria-live="assertive">00:00</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 GreenBite | All rights reserved</p>
+    <nav aria-label="Footer navigation">
+      <a href="index.html">Home</a> |
+      <a href="recipes.html">Recipes</a> |
+      <a href="contact.html">Contact</a>
+    </nav>
+  </footer>
+<script src="script.js" ></script>
+</body>
+</html>
